@@ -32,7 +32,11 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.compose.rally.Overview.rallyTabRowScreens
+import com.example.compose.rally.ui.accounts.AccountsScreen
+import com.example.compose.rally.ui.bills.BillsScreen
 import com.example.compose.rally.ui.components.RallyTabRow
+import com.example.compose.rally.ui.overview.OverviewScreen
 import com.example.compose.rally.ui.theme.RallyTheme
 
 /**
@@ -57,7 +61,7 @@ fun RallyApp() {
         val currentDestination = currentBackStack?.destination
 
         // Change the variable to this and use Overview as a backup screen if this returns null
-        val currentScreen = rallyTabRowScreens.find { it.route == currentDestination?.route } ?: Accounts
+        val currentScreen = rallyTabRowScreens.find { it.route == currentDestination?.route } ?: Overview.Accounts
         Scaffold(
             topBar = {
                 RallyTabRow(
@@ -76,13 +80,13 @@ fun RallyApp() {
                 modifier = Modifier.padding(innerPadding)
             ) {
                 composable(route = Overview.route) {
-                    Overview.screen()
+                    OverviewScreen()
                 }
-                composable(route = Accounts.route) {
-                    Accounts.screen()
+                composable(route = Overview.Accounts.route) {
+                    AccountsScreen()
                 }
-                composable(route = Bills.route) {
-                    Bills.screen()
+                composable(route = Overview.Bills.route) {
+                    BillsScreen()
                 }
             }
             }
