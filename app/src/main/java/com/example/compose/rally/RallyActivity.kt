@@ -34,6 +34,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.compose.rally.Overview.rallyTabRowScreens
 import com.example.compose.rally.ui.accounts.AccountsScreen
+import com.example.compose.rally.ui.accounts.SingleAccountScreen
 import com.example.compose.rally.ui.bills.BillsScreen
 import com.example.compose.rally.ui.components.RallyTabRow
 import com.example.compose.rally.ui.overview.OverviewScreen
@@ -79,9 +80,10 @@ fun RallyApp() {
                 startDestination = Overview.route,
                 modifier = Modifier.padding(innerPadding)
             ) {
-                composable(route = Overview.route) {
-                    OverviewScreen()
+                composable(route = Overview.SingleAccount.route) {
+                    SingleAccountScreen()
                 }
+            }
                 composable(route = Overview.Accounts.route) {
                     AccountsScreen()
                 }
@@ -91,7 +93,7 @@ fun RallyApp() {
             }
             }
         }
-    }
+
 
 fun composable(route: String, function: @Composable () -> Unit) {
     TODO("Not yet implemented")
